@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>GetAway : Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+<style>
+	
+	body {
+        background-color: #f0e5d3;
+	    margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+        }
+	
+    /* Header styling */
+    .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.68);
+            color: black;
+            padding: 10px 20px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin: 0;
+            position: relative;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .logo-img {
+      height: 120px;
+      width: 120px;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+      margin: 0;
+    }
+
+    /* To prevent content overlap with the fixed header */
+    .login-container {
+      padding-top: 20px;
+      padding: 20px;
+      border: 2px solid #c99552; 
+      border-radius: 10px;
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: white;
+    }
+    
+    .login-container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .login-container label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .login-container input[type="submit"] {
+        width: 100px;
+        padding: 10px;
+        background-color: #c99552;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .login-container input[type="submit"]:hover {
+        background-color: #b3834a;
+    }
+
+
+</style>
+
+</head>
+<body>
+	
+     <!-- Header -->
+    <div class="main-header">
+        <div class="logo-container">
+        <a href="Homepage.html">
+        <img class="logo-img" src="LOGO.png" alt="logo listing"></a>
+        <h1 class="logo-text">GetAway</h1>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <h1>User Login</h1>
+        <form action = "GetAwayLogin.php" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" value="Login">
+
+        </form>
+    </div>
+
+
+</body>
+</html>

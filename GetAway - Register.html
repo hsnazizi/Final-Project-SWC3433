@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GetAway:Registration</title>
+    <style>
+        body {
+        background-color: #f0e5d3;
+	    margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+        }
+
+        /* Header styling */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.68);
+            color: black;
+            padding: 10px 20px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin: 0;
+            position: relative;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 120px;
+      width: 120px;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+      margin: 0;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px; /* Space between navigation links */
+      margin-right: 20px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+
+    .nav-menu a:hover {
+      background-color: #ddd;
+      border-radius: 5px;
+    }
+
+    /* To prevent content overlap with the fixed header */
+    .content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+
+        table {
+            background-color: white;
+            border-collapse: collapse;
+            max-width: 600px;
+            margin: 0% auto;
+            
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            width: 95%;
+            padding: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #c99552;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #b3834a;
+        }
+
+        td[colspan="3"] {
+            text-align: center;
+        }
+
+        .redirect-login {
+            display: flex; 
+            flex-direction: column;
+            padding-top: 30px;
+            align-items: center;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-header">
+        <div class="logo-container">
+          <img class="logo-img" src="LOGO.png" alt="logo listing">
+          <h1 class="logo-text">GetAway</h1>
+        </div>
+        <nav class="nav-menu">
+          <a href="Homepage.html"><b>HOME</b></a>
+          <a href="Accomodations Listings.html"><b>ACCOMODATIONS</b></a>
+        </nav>
+      </div>
+
+    <div class="content">
+    <h1 align="center">REGISTRATION FORM</h1><br>
+    <form method="post" action="getaway_register.php">
+        <table align="center" border="1">
+            <!-- Name Row -->
+            <tr>
+                <td width="80">Name</td>
+                <td colspan="2">
+                    <input type="text" id="fname" name="fname" placeholder="First Name" value="">
+                    <input type="text" id="lname" name="lname" placeholder="Last Name" value="">
+                </td>
+            </tr>
+
+            <!-- Date of Birth Row -->
+            <tr>
+                <td width="80">Date of Birth</td>
+                <td colspan="2">
+                    <input type="number" id="day" name="day" placeholder="Day" min="1" max="31" style="width: 30%;" value="">
+                    <select id="month" name="month" style="width: 40%;">
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    <input type="number" id="year" name="year" placeholder="Year" min="1900" max="2024" style="width: 30%;" value="">
+                </td>
+            </tr>
+
+            <!-- Email Row -->
+            <tr>
+                <td width="80">Email</td>
+                <td colspan="2">
+                    <input type="email" id="email" name="email" placeholder="Your Email" value="">
+                </td>
+            </tr>
+
+            <!-- Email Row -->
+            <tr>
+                <td width="80">Password</td>
+                <td colspan="2">
+                    <input type="password" id="password" name="password" placeholder="Your Password" value="">
+                </td>
+            </tr>
+
+            <!-- Phone Row -->
+            <tr>
+                <td width="80">Phone</td>
+                <td colspan="2">
+                    <input type="tel" id="code" name="code" placeholder="Area Code" style="width: 30%;" value="">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone No" style="width: 68%;" value="">
+                </td>
+            </tr>
+
+            <!-- Customer Status Row -->
+            <tr>
+                <td colspan="3">Would you like to subscribe to our newsletter and stay updated with the latest news, offers, and promotions?</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="radio" id="cust_yes" name="cust" value="Yes"> Yes
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="cust_no" name="cust" value="No"> No
+                </td>
+            </tr>
+
+            <!-- Submit Button -->
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="Register">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div class="redirect-login">
+        <a href="Get Away - Login.html"><b>Already Have An Account?<br>Login</b></a>
+    </div>
+
+    </div>
+</body>
+</html>

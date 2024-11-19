@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding:  0;
+            background-color: #f0e5d3;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+            /* Header styling */
+            .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.68);
+            color: black;
+            padding: 10px 20px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin: 0;
+            position: relative;
+        }
+
+            .logo-container {
+            display: flex;
+            align-items: center;
+            }
+
+            .logo-img {
+            height: 120px;
+            width: 120px;
+            margin-right: 10px;
+            }
+
+            .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            margin: 0;
+            }
+
+            .nav-menu {
+            display: flex;
+            gap: 20px; /* Space between navigation links */
+            margin-right: 20px;
+            }
+
+            .nav-menu a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            padding: 5px 10px;
+            }
+
+            .nav-menu a:hover {
+            background-color: #ddd;
+            border-radius: 5px;
+            }
+
+            /* To prevent content overlap with the fixed header */
+            .content {
+            padding-top: 150px;
+            }
+
+        h1 {
+            color: #333;
+        }
+        .result-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .result-item img {
+            width: 100%;
+            max-height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-header">
+        <div class="logo-container">
+          <img class="logo-img" src="LOGO.png" alt="logo listing">
+          <h1 class="logo-text">GetAway</h1>
+        </div>
+        <nav class="nav-menu">
+          <a href="Accomodations Listings.html"><b>ACCOMODATIONS</b></a>
+        </nav>
+      </div>
+
+    <div class="container">
+        <h1>Availability : </h1>
+        <div id="reservation-details">
+            <!-- Details will be dynamically populated here -->
+        </div>
+        <a href="Homepage.php">Go Back</a>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                check_in: params.get('check_in'),
+                check_out: params.get('check_out'),
+                rooms: params.get('rooms'),
+                adults: params.get('adults'),
+                children: params.get('children')
+            };
+        }
+
+        // Mock data for testing
+        const mockData = [
+            { 
+                id: 1,
+                check_in: '2024-11-22', 
+                check_out: '2024-11-25', 
+                rooms: 1, 
+                adults: 2, 
+                children: 0, 
+                image: 'houses/1.jpg' 
+            },
+            { 
+                id: 2, 
+                check_in: '2024-12-03', 
+                check_out: '2024-12-06', 
+                rooms: 2, 
+                adults: 4, 
+                children: 2, 
+                image: 'https://example.com/images/reservation2.jpg' 
+            },
+            { 
+                id: 3, 
+                check_in: '2024-12-10', 
+                check_out: '2024-12-15', 
+                rooms: 1, 
+                adults: 1, 
+                children: 0, 
+                image: 'https://example.com/images/reservation3.jpg' 
+            },
+        ];
+
+        // Populate reservation details
+        function displayReservationDetails() {
+            const details = getQueryParams();
+            const reservationDiv = document.getElementById('reservation-details');
+
+            // Filter mock data based on query parameters
+            const filteredData = mockData.filter(item => {
+                return (!details.check_in || item.check_in === details.check_in) &&
+                       (!details.check_out || item.check_out === details.check_out) &&
+                       (!details.rooms || item.rooms == details.rooms) &&
+                       (!details.adults || item.adults == details.adults) &&
+                       (!details.children || item.children == details.children);
+            });
+
+            // Display results or a "no results" message
+            if (filteredData.length > 0) {
+                filteredData.forEach(item => {
+                    reservationDiv.innerHTML += `
+                        <div class="result-item">
+                             <a href="House(${item.id}).php">
+                            <img src="${item.image}" alt="Reservation Image">
+                            </a>
+                            <div><strong>ID:</strong> ${item.id}</div>
+                            <div><strong>Check-In Date:</strong> ${item.check_in}</div>
+                            <div><strong>Check-Out Date:</strong> ${item.check_out}</div>
+                            <div><strong>Rooms:</strong> ${item.rooms}</div>
+                            <div><strong>Adults:</strong> ${item.adults}</div>
+                            <div><strong>Children:</strong> ${item.children}</div>
+                        </div>
+                    `;
+                });
+            } else {
+                reservationDiv.innerHTML = '<p>No matching results found.</p>';
+            }
+        }
+
+        // Call the function on page load
+        displayReservationDetails();
+    </script>
+</body>
+</html>
